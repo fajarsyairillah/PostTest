@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Update Department</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form action="#" th:action="@{update}" th:object="${department}" method="POST">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="name" class="col-form-label">Department Id&emsp;&emsp;: </label> <input type="text" th:field="*{id}" class="form-control" id="id" placeholder="Department Id"> <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}" class="text-danger"></span>
+                </div>
+                <p>
+                <div class="form-group col-md-8">
+                    <label for="email" class="col-form-label">Department Name&ensp;: </label> <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Department Name"> <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+                </div>
+                <p>
+                <div class="form-group col-md-8">
+                    <input type="submit" class="btn btn-primary" value="Update">
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

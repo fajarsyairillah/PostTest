@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>BNI Bootcamp</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div><b>Employee</b></div>
+
+        <form th:object="${employee}" th:action="@{save}" method="POST">
+            <p>
+                Employee Id&emsp;&nbsp;&nbsp;&nbsp;: <input type="text" th:field="*{id}" />
+                <br/>
+            <p>
+                Employee Name&nbsp;: <input type="text" th:field="*{name}" />
+                <br/>
+            <p>
+                Department Id&emsp;&nbsp;: <input type="text" th:field="*{department}" />
+                <br/>
+            <p>
+                <input type="submit" value="Save" name="Save" />
+                <br>
+        </form>
+        <p>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Employee Id</th>
+                    <th>Employee Name</th>
+                    <th>Department Id</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="employee : ${employees}">
+                    <td th:text="${employee.id}"></td>
+                    <td th:text="${employee.name}"></td>
+                    <td th:text="${employee.department.id}"></td>
+                    <td>
+                        <a th:href="@{/delete_employee/{id}(id=${employee.id})}" class="btn btn-danger">Delete</a>
+                        <a th:href="@{/edit_employee/{id}(id=${employee.id})}" class="btn btn-primary">Edit</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            <a href="/">Back</a>
+    </body>
+</html>
